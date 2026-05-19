@@ -8,33 +8,45 @@ This is a Python project for testing and comparing different LLM APIs: Claude (A
 
 ## Environment Setup
 
+This project uses a Python virtual environment. Set it up:
+
+```bash
+# Create virtual environment (first time only)
+python3 -m venv venv
+
+# Activate virtual environment
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+**API Keys Configuration:**
+
 All API keys are stored in `.env` file (not committed to git):
 - `ANTHROPIC_API_KEY` for Claude
 - `OPENAI_API_KEY` for OpenAI  
 - `GEMINI_API_KEY` for Google GenAI
 
-Always load environment variables using `python-dotenv`:
+Create your `.env` file from the template:
+```bash
+cp .env.example .env
+# Then edit .env and add your actual API keys
+```
+
+All scripts load environment variables using `python-dotenv`:
 ```python
 from dotenv import load_dotenv
 load_dotenv()
 ```
 
-## Dependencies
-
-Install all dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-For Google GenAI specifically:
-```bash
-pip install google-genai
-```
-
 ## Running the Test Scripts
 
-Execute individual LLM test scripts:
+**Always activate the virtual environment first:**
+
 ```bash
+source venv/bin/activate
+
 # Test Claude API
 python src/LLM/Claude-Test.py
 
@@ -43,7 +55,12 @@ python src/LLM/OpenAI-Test.py
 
 # Test Google GenAI
 python src/LLM/GoogleGenAI-Test.py
+
+# Deactivate when done
+deactivate
 ```
+
+**For VS Code:** The project is configured to use the venv Python interpreter automatically (`.vscode/settings.json`). Select the interpreter with `Cmd+Shift+P` → "Python: Select Interpreter" → `./venv/bin/python`.
 
 ## Code Architecture
 
