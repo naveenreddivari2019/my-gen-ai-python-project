@@ -5,7 +5,7 @@ ENV/
 .venv
 
 # Environment variables
-.env
+#.env
 .env.local
 
 # Python
